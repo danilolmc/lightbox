@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Box Control</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="light-box-section">
+            <div class="light-box-header">
+                <label class="light-box-label">Light box</label>
+                <button class="fullscreen-btn" id="fullscreenBtn" title="Tela cheia">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="light-box" id="lightBox">
+                <div class="click-hint">
+                    <span>Clique para editar cor</span>
+                </div>
+            </div>
+            <input type="color" id="colorPicker" class="color-picker-hidden">
+            
+            <!-- Preset color buttons -->
+            <div class="preset-colors">
+                <div class="preset-item">
+                    <button class="preset-btn" id="warmBtn" title="Branco Quente" data-hue="40" data-sat="70" data-light="60"></button>
+                    <span class="preset-label">Quente</span>
+                </div>
+                <div class="preset-item">
+                    <button class="preset-btn" id="neutralBtn" title="Branco Neutro" data-hue="0" data-sat="0" data-light="90"></button>
+                    <span class="preset-label">Neutro</span>
+                </div>
+                <div class="preset-item">
+                    <button class="preset-btn" id="coolBtn" title="Branco Frio" data-hue="200" data-sat="70" data-light="65"></button>
+                    <span class="preset-label">Frio</span>
+                </div>
+            </div>
+            
+            <!-- Custom color picker modal -->
+            <div class="color-picker-modal" id="colorPickerModal">
+                <div class="color-picker-content">
+                    <div class="color-picker-header">
+                        <h3>Selecione uma cor</h3>
+                        <button class="close-btn" id="closeColorPicker">&times;</button>
+                    </div>
+                    <div class="color-picker-body">
+                        <div class="hue-picker">
+                            <label>Matiz</label>
+                            <input type="range" id="hueSlider" min="0" max="360" value="200" class="hue-slider">
+                        </div>
+                        <div class="saturation-picker">
+                            <label>Saturação: <span id="modalSaturationValue">80</span>%</label>
+                            <input type="range" id="modalSaturationSlider" min="0" max="100" value="80" class="saturation-slider">
+                        </div>
+                        <div class="lightness-picker">
+                            <label>Brilho: <span id="modalBrightnessValue">50</span>%</label>
+                            <input type="range" id="modalBrightnessSlider" min="0" max="100" value="50" class="lightness-slider">
+                        </div>
+                        <div class="color-preview" id="colorPreview"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
