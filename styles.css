@@ -14,6 +14,15 @@ body {
     padding: 20px;
 }
 
+.page-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+}
+
 .container {
     background: white;
     border-radius: 12px;
@@ -23,10 +32,39 @@ body {
     width: 100%;
 }
 
+.ad-space {
+    width: 300px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
 @media (max-width: 768px) {
+    .page-wrapper {
+        flex-direction: column;
+    }
+
     .container {
         padding: 20px;
         max-width: 100%;
+        order: 2;
+        flex: 1;
+    }
+
+    .ad-left {
+        order: 1;
+        width: 100%;
+        height: 150px;
+        flex: none;
+    }
+
+    .ad-right {
+        order: 3;
+        width: 100%;
+        height: 150px;
+        flex: none;
     }
 }
 
