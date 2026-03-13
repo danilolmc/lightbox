@@ -120,7 +120,7 @@ function selectPresetColor(h, s, l) {
     hue = h;
     saturation = s;
     lightness = l;
-    
+
     hueSlider.value = hue;
     modalSaturationSlider.value = saturation;
     modalBrightnessSlider.value = lightness;
@@ -134,12 +134,12 @@ colorPicker.addEventListener('change', (e) => {
     hue = hsl.h;
     saturation = hsl.s;
     lightness = hsl.l;
-    
+
     modalSaturationSlider.value = saturation;
     modalBrightnessSlider.value = lightness;
     modalSaturationValue.textContent = saturation;
     modalBrightnessValue.textContent = lightness;
-    
+
     updateLightBoxColor();
 });
 
@@ -194,14 +194,14 @@ window.addEventListener('resize', () => {
     if (colorPickerModal.classList.contains('active')) {
         const lightBoxRect = lightBox.getBoundingClientRect();
         const modalContent = document.querySelector('.color-picker-content');
-        
+
         let top = lightBoxRect.bottom + 20;
         let left = lightBoxRect.left + (lightBoxRect.width / 2) - 200;
-        
+
         if (left < 10) left = 10;
         if (left + 400 > window.innerWidth) left = window.innerWidth - 410;
         if (top + 300 > window.innerHeight) top = lightBoxRect.top - 320;
-        
+
         modalContent.style.top = top + 'px';
         modalContent.style.left = left + 'px';
     }
@@ -225,3 +225,20 @@ loadSavedColor();
 console.log('Cor carregada:', { hue, saturation, lightness });
 updateLightBoxColor();
 colorPreview.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+
+
+const input = document.querySelector("#email")
+const button = document.querySelector("#button")
+
+button.addEventListener('click', () => {
+    const email = input.value
+    fetch("/api/log", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            message: email,
+            url: location.href,
+            time: Date.now()
+        })
+    });
+})
